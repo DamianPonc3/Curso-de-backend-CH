@@ -1,4 +1,5 @@
 class User {
+
     constructor(name, lastName, books, pets){
         this.name = name,
         this.lastName = lastName,
@@ -7,51 +8,40 @@ class User {
     };
 
     getFullName(){
-        console.log(`Full Name: ${this.name} ${this.lastName}`)
+        return `Full Name: ${this.name} ${this.lastName}`
     };
 
-    addPet(kind, namePet){
-        this.pets = [
-            {
-                kind: "dog",
-                namePet: "Thor" 
-            },
-            {
-                kind: "cat",
-                namePet: "Indigo"
-            }
-        ]
+    addPet(namePet){
 
-        console.log(this.pets)
+        this.pets.push({namePet})
+            console.log(`the names of their pets are ${this.pets.map((myPets) => myPets.namePet).join(', ')}`)
     };
 
-    countPets(){
-        console.log(`The user ${this.name} has ${this.pets.length} pets`)
+    countPets(namePet){
+        console.log(`The user has ${(this.pets).length} pets`)
+        return `The user has ${(this.pets).length} pets`
     };
 
     addBook(nameBook, author) {
-        this.books = [
-            {
-                nameBook: "Book1",
-                author: "A"
-            },
-            {
-                nameBook: "Book2",
-                author: "B"
-            }
-        ]
-        // console.log(this.books)
+
+        this.books.push({nameBook, author})
+
+        console.log(this.books)
     };
 
     getBookNames(nameBook){
         console.log(`Name of ${this.name}'s Books: ${this.books.map((myBooks) => myBooks.nameBook).join(', ')}`)
     };
+
 };
 
 const user1 = new User('Damian', 'Ponce');
 
+
 user1.getFullName();
-user1.addBook();
+user1.addBook('book1', 'A');
 user1.getBookNames();
-user1.addPet();
+user1.addPet('Estrellita')
+user1.addPet('Indigo')
 user1.countPets()
+
